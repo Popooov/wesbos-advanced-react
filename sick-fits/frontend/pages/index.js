@@ -1,7 +1,9 @@
-export default function IndexPage(params) {
+import Page from "../components/Page";
+
+export default function IndexPage() {
   return (
-    <div>
+    <Page>
       <p>Hello</p>
-    </div>
+    </Page>
   );
 }
