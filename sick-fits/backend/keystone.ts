@@ -1,6 +1,11 @@
 import { User } from "./schemas/User";
 import { config, createSchema } from "@keystone-next/keystone/schema";
 import "dotenv/config";
+import { createAuth } from "@keystone-next/auth";
+import {
+  withItemData,
+  statelessSessions,
+} from "@keystone-next/keystone/session";
 
 const databaseURL =
   process.env.DATABASE_URL || "mongodb://localhost/keystone-sick-fits-tutorial";
@@ -9,6 +14,16 @@ const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360,
   secret: process.env.COOKIE_SECRET,
 };
+
+const { withAuth } = createAuth({
+  listKey: "User",
+  identityField: "email",
+  secretField: "password",
+  initFirstItem: {
+    fields: ["name", "email", "password"],
+    //TODO roles
+  },
+});
 
 export default config({
   server: {
@@ -24,11 +39,16 @@ export default config({
   },
   lists: createSchema({
     // schema
-    User
+    User,
   }),
   ui: {
     // todo
-    isAccessAllowed: () => true,
+    isAccessAllowed: ({ session }) => {
+      // console.log(session);
+      return !!session?.data;
+    },
   },
-  // todo
+  session: withItemData(statelessSessions(sessionConfig), {
+    User: `id`,
+  }),
 });
