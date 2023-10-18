@@ -1,4 +1,4 @@
-import { integer, select, text } from "@keystone-next/fields";
+import { integer, relationship, select, text } from "@keystone-next/fields";
 import { list } from "@keystone-next/keystone/schema";
 
 export const Product = list({
@@ -10,6 +10,7 @@ export const Product = list({
         displayMode: "textarea",
       },
     }),
+    photo: relationship({ ref: 'ProductImage.product' }),
     status: select({
       options: [
         { label: "Draft", value: "DRAFT" },
