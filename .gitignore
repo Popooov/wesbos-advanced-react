@@ -10,3 +10,4 @@ variables.env
 .keystone
 *.db
 Dockerfile
+.devcontainer
