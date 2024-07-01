@@ -1,5 +1,4 @@
 import { config, createSchema } from "@keystone-next/keystone/schema";
-import "dotenv/config";
 import { createAuth } from "@keystone-next/auth";
 import {
   withItemData,
@@ -41,7 +40,7 @@ export default withAuth(
       url: databaseURL,
       async onConnect(keystone) {
         console.log("Conected to the database");
-        if (process.argv.includes('--seed-data')) {
+        if (process.argv.includes("--seed-data")) {
           await insertSeedData(keystone);
         }
       },
