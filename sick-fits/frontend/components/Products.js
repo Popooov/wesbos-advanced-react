@@ -23,7 +23,7 @@ export default function Products() {
   console.log(data, error, loading);
   return (
     <div>
-      <p>Products</p>;
+      <p>Products</p>
     </div>
   );
 }
