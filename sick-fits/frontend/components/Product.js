@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ItemStyles from "./styles/ItemStyles";
 import Title from "./styles/Title";
+import PriceTag from "./styles/PriceTag";
 
 export default function Product({ product }) {
   return (
@@ -12,6 +13,7 @@ export default function Product({ product }) {
       <Title>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
       </Title>
+      <PriceTag>{product.price}</PriceTag>
     </ItemStyles>
   );
 }
