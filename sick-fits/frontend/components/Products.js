@@ -21,9 +21,15 @@ const ALL_PRODUCTS_QUERY = gql`
 export default function Products() {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY);
   console.log(data, error, loading);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
   return (
     <div>
-      <p>Products</p>
+      <div>
+        {data.allProducts.map((product) => (
+          <p key={product.id}>{product.name}</p>
+        ))}
+      </div>
     </div>
   );
 }
