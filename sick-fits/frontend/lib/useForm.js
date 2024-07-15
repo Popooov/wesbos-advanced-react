@@ -18,8 +18,13 @@ export default function useForm(initial = {}) {
     });
   }
 
+  function resetForm() {
+    setInputs(initial);
+  }
+
   return {
     inputs,
     handleChange,
+    resetForm,
   };
 }
