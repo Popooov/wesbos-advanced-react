@@ -15,6 +15,17 @@ export default function CreateProduct() {
           onChange={handleChange}
         />
       </label>
+      <label htmlFor="price">
+        Price
+        <input
+          type="number"
+          id="price"
+          name="price"
+          placeholder="Price"
+          value={inputs.price}
+          onChange={handleChange}
+        />
+      </label>
     </form>
   );
 }
