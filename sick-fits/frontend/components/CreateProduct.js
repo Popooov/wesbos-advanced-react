@@ -3,6 +3,7 @@ import Form from "./styles/Form";
 
 export default function CreateProduct() {
   const { inputs, handleChange, clearForm, resetForm } = useForm({
+    image: "",
     name: "",
     price: 0,
     description: "",
@@ -33,6 +34,16 @@ export default function CreateProduct() {
             name="price"
             placeholder="Price"
             value={inputs.price}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="description">
+          Description
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Description"
+            value={inputs.description}
             onChange={handleChange}
           />
         </label>

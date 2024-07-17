@@ -13,7 +13,7 @@ export default function useForm(initial = {}) {
       [value] = e.target.files;
     }
     setInputs({
-      ...prev,
+      ...inputs,
       [name]: e.target.value,
     });
   }
