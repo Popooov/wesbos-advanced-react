@@ -9,7 +9,7 @@ export default function CreateProduct() {
     description: "",
   });
   return (
-    <Form>
+    <Form onSubmit={(e) => e.preventDefault()}>
       <fieldset>
         <label htmlFor="image">
           Image
