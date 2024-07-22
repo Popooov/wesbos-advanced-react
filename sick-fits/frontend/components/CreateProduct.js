@@ -1,3 +1,4 @@
+import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import useForm from "../lib/useForm";
 import Form from "./styles/Form";
@@ -33,8 +34,19 @@ export default function CreateProduct() {
     price: 0,
     description: "",
   });
+  const [createProduct, { loading, error, data }] = useMutation(
+    CREATE_PRODUCT_MUTATION,
+    {
+      variables: inputs,
+    }
+  );
   return (
-    <Form onSubmit={(e) => e.preventDefault()}>
+    <Form
+      onSubmit={async (e) => {
+        e.preventDefault();
+        const res = await createProduct();
+      }}
+    >
       <fieldset>
         <label htmlFor="image">
           Image
